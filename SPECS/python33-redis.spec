@@ -26,6 +26,7 @@ This is a Python interface to the Redis key-value store.
 
 %prep
 %setup -q -n %{upstream_name}-%{version}
+rm -frv %{upstream_name}.egg-info
 
 
 %build
@@ -45,6 +46,7 @@ This is a Python interface to the Redis key-value store.
 %changelog
 * Fri Apr 15 2016 Carl George <carl.george@rackspace.com> - 2.10.5-2.ius
 - Include README.rst
+- Use generated egg instead of bundled egg (Fedora)
 
 * Wed Nov 04 2015 Carl George <carl.george@rackspace.com> - 2.10.5-1.ius
 - Latest upstream
