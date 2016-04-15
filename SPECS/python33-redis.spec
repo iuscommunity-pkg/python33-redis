@@ -1,9 +1,6 @@
-
 %define pybasever 3.3
 %define pyver 33
-
 %define upstream_name redis
-
 %define name python%{pyver}-%{upstream_name}
 %define __python /usr/bin/python%{pybasever}
 
@@ -16,34 +13,34 @@ Summary:        A Python client for redis
 
 Group:          Development/Languages
 License:        MIT
-URL:		http://github.com/andymccurdy/redis-py
-Source0:	https://pypi.python.org/packages/source/r/redis/%{upstream_name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+URL:            http://github.com/andymccurdy/redis-py
+Source0:        https://pypi.python.org/packages/source/r/redis/%{upstream_name}-%{version}.tar.gz
 
 BuildArch:      noarch
 BuildRequires:  python%{pyver}-devel
 
+
 %description
 This is a Python interface to the Redis key-value store.
+
 
 %prep
 %setup -q -n %{upstream_name}-%{version}
 
+
 %build
 %{__python} setup.py build
 
+
 %install
-rm -rf %{buildroot}
 %{__python} setup.py install -O1 --skip-build --root %{buildroot}
 
-%clean
-rm -rf %{buildroot}
 
 %files
-%defattr(-,root,root,-)
 %doc CHANGES LICENSE
 %{python_sitelib}/%{upstream_name}
 %{python_sitelib}/%{upstream_name}-%{version}-*.egg-info
+
 
 %changelog
 * Wed Nov 04 2015 Carl George <carl.george@rackspace.com> - 2.10.5-1.ius
