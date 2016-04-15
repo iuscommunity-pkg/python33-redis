@@ -8,7 +8,7 @@
 
 Name:           %{name}
 Version:        2.10.5
-Release:        1.ius%{?dist}
+Release:        2.ius%{?dist}
 Summary:        A Python client for redis
 
 Group:          Development/Languages
@@ -37,12 +37,15 @@ This is a Python interface to the Redis key-value store.
 
 
 %files
-%doc CHANGES LICENSE
+%doc CHANGES LICENSE README.rst
 %{python_sitelib}/%{upstream_name}
 %{python_sitelib}/%{upstream_name}-%{version}-*.egg-info
 
 
 %changelog
+* Fri Apr 15 2016 Carl George <carl.george@rackspace.com> - 2.10.5-2.ius
+- Include README.rst
+
 * Wed Nov 04 2015 Carl George <carl.george@rackspace.com> - 2.10.5-1.ius
 - Latest upstream
 
