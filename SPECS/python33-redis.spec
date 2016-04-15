@@ -18,6 +18,7 @@ Source0:        https://pypi.python.org/packages/source/r/redis/%{upstream_name}
 
 BuildArch:      noarch
 BuildRequires:  python%{pyver}-devel
+BuildRequires:  python%{pyver}-setuptools
 
 
 %description
