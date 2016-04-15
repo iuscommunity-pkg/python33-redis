@@ -1,12 +1,9 @@
-%define pybasever 3.3
-%define pyver 33
-%define upstream_name redis
-%define name python%{pyver}-%{upstream_name}
-%define __python /usr/bin/python%{pybasever}
+%global pyver 33
+%global upstream_name redis
+%global __python33 /usr/bin/python3.3
+%global python33_sitelib %(%{__python33} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
 
-%{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
-
-Name:           %{name}
+Name:           python%{pyver}-%{upstream_name}
 Version:        2.10.5
 Release:        2.ius%{?dist}
 Summary:        A Python client for redis
@@ -31,17 +28,17 @@ rm -frv %{upstream_name}.egg-info
 
 
 %build
-%{__python} setup.py build
+%{__python33} setup.py build
 
 
 %install
-%{__python} setup.py install -O1 --skip-build --root %{buildroot}
+%{__python33} setup.py install -O1 --skip-build --root %{buildroot}
 
 
 %files
 %doc CHANGES LICENSE README.rst
-%{python_sitelib}/%{upstream_name}
-%{python_sitelib}/%{upstream_name}-%{version}-*.egg-info
+%{python33_sitelib}/%{upstream_name}
+%{python33_sitelib}/%{upstream_name}-%{version}-*.egg-info
 
 
 %changelog
