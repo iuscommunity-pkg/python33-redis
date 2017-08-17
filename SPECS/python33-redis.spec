@@ -4,14 +4,14 @@
 %global python33_sitelib %(%{__python33} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
 
 Name:           python%{pyver}-%{upstream_name}
-Version:        2.10.5
-Release:        2.ius%{?dist}
+Version:        2.10.6
+Release:        1.ius%{?dist}
 Summary:        A Python client for redis
 
 Group:          Development/Languages
 License:        MIT
 URL:            http://github.com/andymccurdy/redis-py
-Source0:        https://pypi.python.org/packages/source/r/redis/%{upstream_name}-%{version}.tar.gz
+Source0:        https://pypi.io/packages/source/r/redis/%{upstream_name}-%{version}.tar.gz 
 
 BuildArch:      noarch
 BuildRequires:  python%{pyver}-devel
@@ -42,6 +42,10 @@ rm -frv %{upstream_name}.egg-info
 
 
 %changelog
+* Thu Aug 17 2017 Ben Harper <ben.harper@rackspace.com> - 2.10-6.-1.ius
+- Latest upstream
+- update Source0
+
 * Fri Apr 15 2016 Carl George <carl.george@rackspace.com> - 2.10.5-2.ius
 - Include README.rst
 - Use generated egg instead of bundled egg (Fedora)
